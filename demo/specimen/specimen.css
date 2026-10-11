@@ -1,0 +1,211 @@
+/* Sill specimen: Designesy kernel tokens, dark-first. One screen, large cells,
+   few words, deliberate elevations, so the light has room to perform. */
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #010102;
+  --surface: #0a0a0c;
+  --surface-raised: #121216;
+  --surface-lifted: #16161b;
+  --ink: #f5f5f7;
+  --muted: #a0a0a0;
+  --muted-dim: #8a8a8a;
+  --line: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.22);
+  --signal: #0133cb;
+  --signal-light: #3358e8;
+  --signal-access: #5d7bff;
+  --on-signal: #ffffff;
+  --sans: 'Schibsted Grotesk', -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Geist Mono', ui-monospace, monospace;
+  --elev-1: 0 1px 1px rgb(0 0 0 / 0.3), 0 2px 4px rgb(0 0 0 / 0.22);
+  --elev-2: 0 1px 1px rgb(0 0 0 / 0.28), 0 4px 8px -2px rgb(0 0 0 / 0.3), 0 12px 24px -8px rgb(0 0 0 / 0.36);
+  --elev-3: 0 2px 2px rgb(0 0 0 / 0.26), 0 8px 16px -4px rgb(0 0 0 / 0.32), 0 24px 48px -12px rgb(0 0 0 / 0.42);
+
+  /* Hero light tokens: warm key, cool sky fill. */
+  --sill-floor: #121216;
+  --sill-sky: #9db2dc;
+  --sill-shade: 0 0 0;
+  --sill-key: 1.15;
+  --sill-amb: 0.24;
+  --sill-ref: 0.2;
+  --sill-wash: 0.06;
+  --sill-spec: 0.22;
+  --sill-rim: 0.78;
+  --sill-cast: 0.5;
+  --sill-ring: rgb(255 255 255 / 0.07);
+  --sill-bump: 1.4;
+  --sill-grain: 0.03;
+  --sill-lift-max: 0.05;
+  --sill-lift-max-bare: 0.5;
+  --sill-bare-gain: 2.6;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --paper: #f3f3f5;
+  --surface: #ffffff;
+  --surface-raised: #f5f5f7;
+  --surface-lifted: #ececf0;
+  --ink: #1a1a1e;
+  --muted: #555560;
+  --muted-dim: #66666f;
+  --line: rgba(10, 20, 60, 0.1);
+  --line-strong: rgba(10, 20, 60, 0.2);
+  --signal-access: #2a4cd8;
+  --elev-1: 0 1px 1px rgb(20 32 90 / 0.06), 0 2px 4px rgb(20 32 90 / 0.05);
+  --elev-2: 0 1px 1px rgb(20 32 90 / 0.06), 0 4px 8px -2px rgb(20 32 90 / 0.07), 0 12px 24px -8px rgb(20 32 90 / 0.09);
+  --elev-3: 0 2px 2px rgb(20 32 90 / 0.05), 0 8px 16px -4px rgb(20 32 90 / 0.07), 0 24px 48px -12px rgb(20 32 90 / 0.1);
+
+  --sill-floor: var(--paper);
+  --sill-sky: #e6ebf3;
+  --sill-shade: 24 32 72;
+  --sill-key: 0.36;
+  --sill-amb: 1.5;
+  --sill-ref: 0.98;
+  --sill-wash: 0.06;
+  --sill-spec: 0.3;
+  --sill-rim: 0.85;
+  --sill-cast: 0.24;
+  --sill-ring: rgb(10 20 60 / 0.09);
+  --sill-bump: 1;
+  --sill-grain: 0.02;
+  --sill-lift-max: 0.3;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+}
+body {
+  position: relative;
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font: 400 1rem/1.55 'Schibsted Grotesk', -apple-system, 'Segoe UI', sans-serif;
+  background: transparent;
+}
+:focus-visible { outline: 2px solid var(--signal-access); outline-offset: 3px; }
+p, h1, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+.spec {
+  display: grid;
+  grid-template-columns: minmax(0, 680px) minmax(0, 880px);
+  justify-content: center;
+  align-items: center;
+  gap: 120px;
+  min-height: 100vh;
+  padding: 96px clamp(24px, 5vw, 120px);
+}
+
+/* ---------- intro ---------- */
+.eyebrow {
+  font: 500 0.82rem/1 'Geist Mono', monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-dim);
+}
+.headline {
+  display: block;
+  margin: 26px 0 22px;
+  font-family: 'Fraunces', serif;
+  font-weight: 650;
+  font-size: clamp(3.4rem, 6.4vw, 8.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  font-variation-settings: 'SOFT' 60, 'opsz' 144;
+  text-wrap: balance;
+}
+.lede { max-width: 30rem; font-size: 1.2rem; color: var(--muted); }
+
+.console {
+  display: grid;
+  gap: 22px;
+  margin-top: 48px;
+  padding: 26px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, var(--surface-lifted), var(--surface-raised));
+}
+.console-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+
+.seg { --sl-ring: var(--line); display: inline-grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 12px; background: var(--surface); }
+.seg-btn { --sl-ring: transparent; min-width: 110px; min-height: 44px; border: 0; border-radius: 9px; background: transparent; color: var(--muted); font: 600 1rem/1 'Schibsted Grotesk', sans-serif; cursor: pointer; }
+.seg-btn.is-on { --sl-ring: var(--line); background: var(--surface-lifted); color: var(--ink); }
+
+.switch { display: inline-flex; align-items: center; gap: 14px; padding: 0; border: 0; background: none; color: var(--ink); font: 500 1rem/1 'Schibsted Grotesk', sans-serif; cursor: pointer; }
+.switch-track { --sl-ring: var(--line-strong); position: relative; display: block; width: 64px; height: 36px; border-radius: 999px; background: var(--signal); transition: background-color 250ms cubic-bezier(0.23, 1, 0.32, 1); }
+.switch[aria-checked='false'] .switch-track { background: var(--surface); }
+.switch-thumb { --sl-ring: transparent; position: absolute; top: 4px; left: 4px; display: block; width: 28px; height: 28px; border-radius: 50%; background: #f5f5f7; transition: transform 250ms cubic-bezier(0.23, 1, 0.32, 1); transform: translateX(28px); }
+.switch[aria-checked='false'] .switch-thumb { transform: translateX(0); }
+
+.slider-row { display: grid; grid-template-columns: 1fr auto; gap: 14px 12px; }
+.slider-label { color: var(--muted); }
+.slider-val { font: 500 0.95rem/1 'Geist Mono', monospace; font-variant-numeric: tabular-nums; }
+.slider { --sl-ring: var(--line); position: relative; grid-column: 1 / -1; height: 14px; border-radius: 999px; background: var(--surface); }
+.slider-fill { position: absolute; left: 0; top: 0; bottom: 0; width: var(--p, 19%); border-radius: inherit; background: linear-gradient(90deg, #f2a35a, #ffd9a8); opacity: 0.85; }
+.slider-thumb { --sl-ring: rgb(0 0 0 / 0.2); position: absolute; top: 50%; left: var(--p, 19%); width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: linear-gradient(180deg, #e9e9ee, #a9abb3); }
+.sr { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+.actions { justify-content: flex-start; gap: 12px; }
+.btn { --sl-ring: var(--line-strong); display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border: 0; border-radius: 10px; font: 600 1rem/1 'Schibsted Grotesk', sans-serif; cursor: pointer; transition: transform 150ms cubic-bezier(0.23, 1, 0.32, 1); }
+.btn:active { transform: scale(0.97); }
+.btn-primary { --sl-ring: transparent; background: var(--signal); color: var(--on-signal); }
+.btn-ghost { background: var(--surface-raised); color: var(--ink); }
+
+/* ---------- field ---------- */
+.field { position: relative; display: grid; gap: 28px; }
+.tray { padding: 24px; border-radius: 24px; background: #1b1b20; }
+.keys { display: grid; grid-template-columns: repeat(9, 1fr); gap: 20px; }
+.key { --sl-ring: rgb(255 255 255 / 0.08); display: block; aspect-ratio: 1; border-radius: 18px; background: linear-gradient(180deg, #26262d, #1d1d23); }
+.key.is-signal { background: linear-gradient(180deg, #2a4fe0, var(--signal)); }
+
+.quartet { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.tile { display: grid; gap: 12px; padding: 12px 12px 16px; border-radius: 18px; background: var(--surface-raised); }
+.tile-face { --sl-ring: rgb(255 255 255 / 0.06); display: block; aspect-ratio: 1.15; border-radius: 12px; }
+.face-matte { background: #34322d; }
+.face-satin { background: linear-gradient(180deg, #363841, #2b2d34); }
+.face-gloss { background: linear-gradient(180deg, #13235c, #0c1740); }
+.face-metal { background: linear-gradient(180deg, #4c4f57, #2c2e33); }
+.tile-name { padding: 0 4px; font: 500 0.95rem/1 'Geist Mono', monospace; letter-spacing: 0.04em; color: var(--muted); }
+
+.glass {
+  position: absolute;
+  right: -36px;
+  top: 300px;
+  display: grid;
+  gap: 6px;
+  width: 340px;
+  padding: 22px 24px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--surface-raised) 72%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+.glass-label { font: 500 0.8rem/1 'Geist Mono', monospace; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.glass-text { font: 600 1.3rem/1.25 'Schibsted Grotesk', sans-serif; }
+
+/* Static token elevation: what the page looks like with the light off. */
+html:not(.sill-gl) .console,
+html:not(.sill-gl) .tray,
+html:not(.sill-gl) .tile { box-shadow: var(--elev-2), inset 0 0 0 1px var(--line); }
+html:not(.sill-gl) .glass { box-shadow: var(--elev-3), inset 0 0 0 1px var(--line); }
+html:not(.sill-gl) .key,
+html:not(.sill-gl) .btn-ghost,
+html:not(.sill-gl) .seg { box-shadow: var(--elev-1), inset 0 0 0 1px var(--line); }
+
+@media (max-width: 1100px) {
+  .spec { grid-template-columns: minmax(0, 1fr); gap: 56px; }
+  .glass { position: relative; right: auto; top: auto; width: auto; }
+}
+@media (max-width: 640px) {
+  .keys { grid-template-columns: repeat(6, 1fr); gap: 10px; }
+  .quartet { grid-template-columns: repeat(2, 1fr); }
+  .console-row { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .switch-track, .switch-thumb, .btn { transition-duration: 0.01ms; }
+}

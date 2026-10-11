@@ -1,0 +1,46 @@
+name: CI
+
+# Sill is published to npm; this is the gate that runs before anything reaches
+# the registry. The package has zero runtime dependencies, so there is no
+# install step: the suite uses node:test from the standard library.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['18', '20', '22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Run the test suite
+        # Node 18 and 20 do not expand globs in --test, so pass the files explicitly.
+        run: node --test tests/sill.test.mjs
+      - name: Verify every module parses
+        run: |
+          for f in src/*.js; do
+            node --check "$f" || exit 1
+          done
+          echo "all modules parse"
+
+  package:
+    name: Package surface
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Every shipped file is importable
+        run: python3 scripts/audit-exports.py

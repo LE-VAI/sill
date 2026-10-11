@@ -1,0 +1,134 @@
+/*
+  Sill: real-time light for interfaces. Surface layer.
+
+  Every [data-lit] element gets one injected .sl layer, painted between the
+  element's own face (its background) and its content. The layer carries the
+  light's contribution to that surface: a broad diffuse wash, one specular
+  reflection, and a per-edge rim. Text never sits under the light, so the
+  light can change brightness without changing contrast.
+
+  Themes own the numbers through the --sill-* tokens below. The kernel never
+  hard-codes a colour.
+*/
+
+@layer sill {
+  :root {
+    /* Floor (the page plane the WebGL renderer lights). */
+    --sill-floor: #f4f1ec;
+    /* Sky / ambient fill colour and the cast-shadow tint. */
+    --sill-sky: #dfe6f2;
+    --sill-shade: 24 32 72;
+    /* Gains the theme exposes to the light model (unitless). */
+    --sill-key: 0.62;
+    --sill-amb: 1;
+    --sill-wash: 0.07;
+    --sill-spec: 0.22;
+    --sill-rim: 0.5;
+    --sill-cast: 0.2;
+    --sill-pool: 1;
+    /* Ceiling on wash + specular alpha over a text-bearing face (contrast guard). */
+    --sill-lift-max: 0.3;
+    /* Faces with no text: the guard relaxes, and bare-gain scales their response. */
+    --sill-lift-max-bare: 0.6;
+    --sill-bare-gain: 1;
+    /* Base 1px ring every lit surface keeps when the light is far away. */
+    --sill-ring: rgb(10 20 60 / 0.09);
+  }
+
+  :where([data-lit]) {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .sl {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    overflow: hidden;
+    contain: strict;
+    box-shadow: inset 0 0 0 1px var(--sill-ring);
+    background:
+      radial-gradient(
+        var(--srx, 1px) var(--sry, 1px) at var(--sx, 50%) var(--sy, 50%),
+        rgb(var(--lc, 255 255 255) / var(--sa, 0)),
+        rgb(var(--lc, 255 255 255) / calc(var(--sa, 0) * 0.32)) 38%,
+        rgb(var(--lc, 255 255 255) / 0) 100%
+      ),
+      radial-gradient(
+        circle var(--wr, 1px) at var(--wx, 50%) var(--wy, 50%),
+        rgb(var(--lc, 255 255 255) / var(--wa, 0)),
+        rgb(var(--lc, 255 255 255) / 0) 58%,
+        rgb(var(--sc, 0 0 0) / var(--wf, 0)) 100%
+      );
+  }
+
+  /* Per-edge rim: four directional ramps on a 1px ring. Each edge's alpha is
+     the bevel's response to the light (N . L), so the edge facing the light
+     catches it and the far edge goes quiet. */
+  .sl-rim {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background:
+      linear-gradient(to bottom, rgb(var(--lr, 255 255 255) / var(--rt, 0)), rgb(var(--lr, 255 255 255) / 0) 42%),
+      linear-gradient(to left, rgb(var(--lr, 255 255 255) / var(--rr, 0)), rgb(var(--lr, 255 255 255) / 0) 42%),
+      linear-gradient(to top, rgb(var(--lr, 255 255 255) / var(--rb, 0)), rgb(var(--lr, 255 255 255) / 0) 42%),
+      linear-gradient(to right, rgb(var(--lr, 255 255 255) / var(--rl, 0)), rgb(var(--lr, 255 255 255) / 0) 42%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  }
+
+  /* Controls cast onto the surface they sit on through box-shadow; giving
+     them their own layer keeps that repaint off the card's text. */
+  [data-lit].sl-css-cast {
+    will-change: transform;
+  }
+
+  /* The floor canvas. Absolutely positioned inside a clip box that spans
+     the document, so between renders it scrolls with the content and the
+     shadows stay glued to their cards. */
+  .sill-floor {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: clip;
+    pointer-events: none;
+  }
+
+  .sill-floor canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    will-change: transform;
+  }
+
+  /* Lit type repaints only its own glyph layer as the light moves. */
+  .sl-type {
+    will-change: transform;
+  }
+
+  /* Off switch: the light disappears entirely and token shadows take over. */
+  .sill-off .sl,
+  .sill-off .sill-floor {
+    display: none;
+  }
+
+  .sill-stage {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (prefers-contrast: more) {
+    :root {
+      --sill-wash: 0.03;
+      --sill-spec: 0.1;
+      --sill-rim: 0.3;
+    }
+  }
+}

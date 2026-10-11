@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sill Specimen</title>
+  <meta name="description" content="A specimen surface for Sill: real-time light on interface cells, controls, materials and type.">
+  <meta name="color-scheme" content="dark light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..700,0..100&family=Geist+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400..700&display=swap">
+  <link rel="stylesheet" href="../../src/sill.css">
+  <link rel="stylesheet" href="../../src/panel.css">
+  <link rel="stylesheet" href="specimen.css">
+</head>
+<body>
+  <main class="spec" aria-labelledby="spec-title">
+    <section class="intro">
+      <p class="eyebrow">Sill · real-time light</p>
+      <h1 id="spec-title" class="headline" data-lit="type" data-depth="12">Lit by the pointer.</h1>
+      <p class="lede">Shadows, reflections and edge light, computed from where you are.</p>
+
+      <div class="console" data-lit data-material="satin" data-depth="26" role="group" aria-label="Light controls specimen">
+        <div class="console-row">
+          <div class="seg" data-lit data-material="satin" data-depth="4" role="radiogroup" aria-label="Source">
+            <button type="button" role="radio" aria-checked="true" class="seg-btn is-on" data-lit data-material="gloss" data-depth="5">Lamp</button>
+            <button type="button" role="radio" aria-checked="false" class="seg-btn">Sun</button>
+          </div>
+          <button type="button" role="switch" aria-checked="true" class="switch" id="haze-switch">
+            <span class="switch-label">Haze</span>
+            <span class="switch-track" data-lit data-material="satin" data-depth="3" aria-hidden="true"><span class="switch-thumb" data-lit data-material="gloss" data-depth="6"></span></span>
+          </button>
+        </div>
+        <div class="console-row slider-row">
+          <label for="temp" class="slider-label">Temperature</label>
+          <output for="temp" id="temp-out" class="slider-val">3200 K</output>
+          <div class="slider" data-lit data-material="satin" data-depth="2">
+            <span class="slider-fill"></span>
+            <span class="slider-thumb" id="temp-thumb" data-lit data-material="metal" data-depth="9"></span>
+          </div>
+          <input id="temp" class="sr" type="range" min="2200" max="7500" step="50" value="3200">
+        </div>
+        <div class="console-row actions">
+          <button type="button" class="btn btn-primary" data-lit data-material="gloss" data-depth="8">Apply light</button>
+          <button type="button" class="btn btn-ghost" data-lit data-material="satin" data-depth="6">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="field" aria-label="Surfaces">
+      <div class="tray" data-lit data-material="matte" data-depth="10" aria-hidden="true">
+        <div class="keys" id="keys"></div>
+      </div>
+
+      <ul class="quartet" aria-label="Materials">
+        <li class="tile" data-lit data-material="matte" data-depth="14"><span class="tile-face face-matte" data-lit data-material="matte" data-depth="3"></span><span class="tile-name">Matte</span></li>
+        <li class="tile" data-lit data-material="satin" data-depth="14"><span class="tile-face face-satin" data-lit data-material="satin" data-depth="3"></span><span class="tile-name">Satin</span></li>
+        <li class="tile" data-lit data-material="gloss" data-depth="14"><span class="tile-face face-gloss" data-lit data-material="gloss" data-depth="3"></span><span class="tile-name">Gloss</span></li>
+        <li class="tile" data-lit data-material="metal" data-depth="14"><span class="tile-face face-metal" data-lit data-material="metal" data-depth="3"></span><span class="tile-name">Metal</span></li>
+      </ul>
+
+      <aside class="glass" data-lit data-material="glass" data-depth="58" data-opacity="0.45">
+        <p class="glass-label">One light</p>
+        <p class="glass-text">Every surface answers it.</p>
+      </aside>
+    </section>
+  </main>
+
+  <script type="module" src="specimen.js"></script>
+</body>
+</html>

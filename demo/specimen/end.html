@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sill</title>
+  <meta name="description" content="Sill, real-time light for interfaces: the wordmark lit by the pointer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..700,0..100&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../../src/sill.css">
+  <link rel="stylesheet" href="specimen.css">
+  <style>
+    .end { display: grid; place-items: center; min-height: 100vh; }
+    .end-lockup { display: grid; justify-items: center; gap: 18px; }
+    .end-mark { font-family: 'Fraunces', serif; font-weight: 650; font-size: 21rem; line-height: 0.9; letter-spacing: -0.05em; font-variation-settings: 'SOFT' 60, 'opsz' 144; }
+    .end-sub { font: 500 2.8rem/1 'Geist Mono', monospace; letter-spacing: 0.04em; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main class="end">
+    <div class="end-lockup">
+      <h1 class="end-mark" data-lit="type" data-depth="24">Sill</h1>
+      <p class="end-sub" data-lit="type" data-depth="5">real-time light</p>
+    </div>
+  </main>
+  <script type="module">
+    import { Sill } from '../../src/sill.js';
+    window.sill = new Sill({ root: document.body, params: { mode: 'lamp', temperature: 3100, intensity: 1.2, ambient: 0.28, shadowLength: 1.3, softness: 0.5, depth: 1.5, material: 1.4, rays: 0.4 } });
+  </script>
+</body>
+</html>

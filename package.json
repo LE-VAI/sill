@@ -1,0 +1,63 @@
+{
+  "name": "@designesy/sill",
+  "version": "0.1.0",
+  "description": "Real-time light for interfaces: the pointer is the light, and cards, controls and type cast physically projected shadows, catch highlights and edge light. Zero dependencies, accessible by construction.",
+  "type": "module",
+  "main": "src/sill.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/sill.js"
+    },
+    "./stage.js": "./src/stage.js",
+    "./panel.js": "./src/panel.js",
+    "./sill.css": "./src/sill.css",
+    "./panel.css": "./src/panel.css",
+    "./index.d.ts": "./src/index.d.ts"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  },
+  "keywords": [
+    "lighting",
+    "shadows",
+    "webgl",
+    "webgl2",
+    "ui",
+    "design-system",
+    "pointer",
+    "physically-based",
+    "accessibility",
+    "a11y",
+    "css",
+    "signed-distance-field"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Designesy",
+    "email": "hello@designesy.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LE-VAI/sill.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LE-VAI/sill/issues"
+  },
+  "homepage": "https://github.com/LE-VAI/sill#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}

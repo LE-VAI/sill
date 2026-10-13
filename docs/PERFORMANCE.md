@@ -24,7 +24,8 @@ intervals, so it reports missed frames, not GPU time.
 ## Not measured
 
 - GPU time directly (no timer query).
-- Firefox and Safari.
+- Firefox performance (it renders the demos the same as Chrome, but frame times were not measured there).
+- Safari.
 - Real phones (touch was emulated).
 
 ## Tiers

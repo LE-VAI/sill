@@ -2,11 +2,11 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="docs/media/hero-poster.png">
-    <img src="docs/media/hero-loop.webp" width="800" alt="A dark interface lit by the mouse pointer. A large serif headline, Lit by the pointer, casts shadows that swing as the cursor moves, then a keypad of raised keys catches moving highlights.">
+    <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/LE-VAI/sill/main/docs/media/hero-poster.png">
+    <img src="https://raw.githubusercontent.com/LE-VAI/sill/main/docs/media/hero-loop.webp" width="800" alt="A dark interface lit by the mouse pointer. A large serif headline, Lit by the pointer, casts shadows that swing as the cursor moves, then a keypad of raised keys catches moving highlights.">
   </picture>
 </p>
-<p align="center"><sub>A 5.5-second loop from the live page, captured frame by frame. It shows a still frame if you prefer reduced motion.</sub></p>
+<p align="center"><sub>A 5.5-second loop from the live page, captured frame by frame. It shows a still frame if you prefer reduced motion. <a href="https://le-vai.github.io/sill/">Try it live</a>.</sub></p>
 
 Real-time light for interfaces. The pointer is the light: cards, controls and
 type cast shadows projected from it, catch highlights where a real surface
@@ -15,22 +15,36 @@ would, and light up on the edge facing it.
 Your interface stays real HTML. Text, buttons, focus and screen readers work
 exactly as before. Sill lights them.
 
-```html
-<link rel="stylesheet" href="@designesy/sill/sill.css">
+Mark up what should take the light:
 
+```html
 <article class="card" data-lit data-material="satin" data-depth="16">
   <h2 data-lit="type" data-depth="10">Lit by the pointer.</h2>
   <button data-lit data-material="gloss" data-depth="6">Apply</button>
 </article>
-
-<script type="module">
-  import { Sill } from '@designesy/sill';
-  new Sill({ params: { mode: 'lamp', temperature: 3200 } });
-</script>
 ```
+
+With a bundler (Vite, webpack, esbuild):
 
 ```bash
 npm install @designesy/sill
+```
+
+```js
+import '@designesy/sill/sill.css';
+import { Sill } from '@designesy/sill';
+
+new Sill({ params: { mode: 'lamp', temperature: 3200 } });
+```
+
+Without a build step, straight from a CDN:
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@designesy/sill@0.1.1/src/sill.css">
+<script type="module">
+  import { Sill } from 'https://cdn.jsdelivr.net/npm/@designesy/sill@0.1.1/src/sill.js';
+  new Sill({ params: { mode: 'lamp', temperature: 3200 } });
+</script>
 ```
 
 ## What it does
@@ -54,7 +68,7 @@ npm install @designesy/sill
 ## Before and after
 
 <p align="center">
-  <img src="docs/media/before-after.png" width="800" alt="Split view of the same page. Left of a warm divider line, Sill: a pool of lamp light and shadows. Right, static shadows on a flat dark background.">
+  <img src="https://raw.githubusercontent.com/LE-VAI/sill/main/docs/media/before-after.png" width="800" alt="Split view of the same page. Left of a warm divider line, Sill: a pool of lamp light and shadows. Right, static shadows on a flat dark background.">
 </p>
 
 ## Accessibility
@@ -149,17 +163,21 @@ derived shadows and an accessibility floor.
 
 ## Demos
 
+Live at [le-vai.github.io/sill](https://le-vai.github.io/sill/): the specimen, the
+furniture landing page, and the wordmark. To run them locally:
+
 ```bash
 python -m http.server 4731
 ```
 
-Then open `http://localhost:4731/demo/specimen/` or `/demo/furniture/`.
+Then open `http://localhost:4731/`.
 
 ## Browser support
 
 The floor shadows and product stages need WebGL2. The surface layer uses CSS
-masks and `color-mix()`. Tested in Chrome 154. Firefox and Safari are not yet
-tested.
+masks and `color-mix()`. All three demos render the same in Chrome 154 and
+Firefox 152 on Windows, with no console errors. Safari is not yet tested, and
+performance has only been measured in Chrome.
 
 ## License
 

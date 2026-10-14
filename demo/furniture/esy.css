@@ -14,13 +14,13 @@
   --line: rgb(40 30 20 / 0.1);
   --line-strong: rgb(40 30 20 / 0.2);
   --on-ink: #fbfaf7;
-  --signal-access: #2a4cd8;
+  --signal-access: #016ABB;
   --stage-back: #ece7e0;
   --stage-floor: #efebe4;
 
   --sans: 'Schibsted Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   --serif: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', serif;
-  --mono: 'Geist Mono', ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
+  --mono: 'Atkinson Hyperlegible Mono', ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
 
   --radius-sm: 4px;
   --radius: 6px;
@@ -64,7 +64,7 @@
   --line: rgb(255 245 230 / 0.1);
   --line-strong: rgb(255 245 230 / 0.2);
   --on-ink: #161513;
-  --signal-access: #5d7bff;
+  --signal-access: #0A94FF;
   --stage-back: #1e1b18;
   --stage-floor: #3b362f;
   --elev-1: 0 1px 1px rgb(0 0 0 / 0.3), 0 2px 4px rgb(0 0 0 / 0.22);
@@ -99,7 +99,7 @@
     --line: rgb(255 245 230 / 0.1);
     --line-strong: rgb(255 245 230 / 0.2);
     --on-ink: #161513;
-    --signal-access: #5d7bff;
+    --signal-access: #0A94FF;
     --stage-back: #1e1b18;
     --stage-floor: #3b362f;
     --elev-1: 0 1px 1px rgb(0 0 0 / 0.3), 0 2px 4px rgb(0 0 0 / 0.22);

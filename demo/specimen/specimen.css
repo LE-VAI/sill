@@ -13,12 +13,12 @@
   --muted-dim: #8a8a8a;
   --line: rgba(255, 255, 255, 0.12);
   --line-strong: rgba(255, 255, 255, 0.22);
-  --signal: #0133cb;
-  --signal-light: #3358e8;
-  --signal-access: #5d7bff;
-  --on-signal: #ffffff;
+  --signal: #0A94FF;
+  --signal-light: #36A7FF;
+  --signal-access: #0A94FF;
+  --on-signal: #010102;
   --sans: 'Schibsted Grotesk', -apple-system, 'Segoe UI', sans-serif;
-  --mono: 'Geist Mono', ui-monospace, monospace;
+  --mono: 'Atkinson Hyperlegible Mono', ui-monospace, monospace;
   --elev-1: 0 1px 1px rgb(0 0 0 / 0.3), 0 2px 4px rgb(0 0 0 / 0.22);
   --elev-2: 0 1px 1px rgb(0 0 0 / 0.28), 0 4px 8px -2px rgb(0 0 0 / 0.3), 0 12px 24px -8px rgb(0 0 0 / 0.36);
   --elev-3: 0 2px 2px rgb(0 0 0 / 0.26), 0 8px 16px -4px rgb(0 0 0 / 0.32), 0 24px 48px -12px rgb(0 0 0 / 0.42);
@@ -53,7 +53,7 @@
   --muted-dim: #66666f;
   --line: rgba(10, 20, 60, 0.1);
   --line-strong: rgba(10, 20, 60, 0.2);
-  --signal-access: #2a4cd8;
+  --signal-access: #016ABB;
   --elev-1: 0 1px 1px rgb(20 32 90 / 0.06), 0 2px 4px rgb(20 32 90 / 0.05);
   --elev-2: 0 1px 1px rgb(20 32 90 / 0.06), 0 4px 8px -2px rgb(20 32 90 / 0.07), 0 12px 24px -8px rgb(20 32 90 / 0.09);
   --elev-3: 0 2px 2px rgb(20 32 90 / 0.05), 0 8px 16px -4px rgb(20 32 90 / 0.07), 0 24px 48px -12px rgb(20 32 90 / 0.1);
@@ -104,7 +104,7 @@ ul { padding: 0; list-style: none; }
 
 /* ---------- intro ---------- */
 .eyebrow {
-  font: 500 0.82rem/1 'Geist Mono', monospace;
+  font: 500 0.82rem/1 'Atkinson Hyperlegible Mono', monospace;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted-dim);
@@ -144,7 +144,7 @@ ul { padding: 0; list-style: none; }
 
 .slider-row { display: grid; grid-template-columns: 1fr auto; gap: 14px 12px; }
 .slider-label { color: var(--muted); }
-.slider-val { font: 500 0.95rem/1 'Geist Mono', monospace; font-variant-numeric: tabular-nums; }
+.slider-val { font: 500 0.95rem/1 'Atkinson Hyperlegible Mono', monospace; font-variant-numeric: tabular-nums; }
 .slider { --sl-ring: var(--line); position: relative; grid-column: 1 / -1; height: 14px; border-radius: 999px; background: var(--surface); }
 .slider-fill { position: absolute; left: 0; top: 0; bottom: 0; width: var(--p, 19%); border-radius: inherit; background: linear-gradient(90deg, #f2a35a, #ffd9a8); opacity: 0.85; }
 .slider-thumb { --sl-ring: rgb(0 0 0 / 0.2); position: absolute; top: 50%; left: var(--p, 19%); width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: linear-gradient(180deg, #e9e9ee, #a9abb3); }
@@ -161,7 +161,7 @@ ul { padding: 0; list-style: none; }
 .tray { padding: 24px; border-radius: 24px; background: #1b1b20; }
 .keys { display: grid; grid-template-columns: repeat(9, 1fr); gap: 20px; }
 .key { --sl-ring: rgb(255 255 255 / 0.08); display: block; aspect-ratio: 1; border-radius: 18px; background: linear-gradient(180deg, #26262d, #1d1d23); }
-.key.is-signal { background: linear-gradient(180deg, #2a4fe0, var(--signal)); }
+.key.is-signal { background: linear-gradient(180deg, var(--signal-light), var(--signal)); }
 
 .quartet { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .tile { display: grid; gap: 12px; padding: 12px 12px 16px; border-radius: 18px; background: var(--surface-raised); }
@@ -170,7 +170,7 @@ ul { padding: 0; list-style: none; }
 .face-satin { background: linear-gradient(180deg, #363841, #2b2d34); }
 .face-gloss { background: linear-gradient(180deg, #13235c, #0c1740); }
 .face-metal { background: linear-gradient(180deg, #4c4f57, #2c2e33); }
-.tile-name { padding: 0 4px; font: 500 0.95rem/1 'Geist Mono', monospace; letter-spacing: 0.04em; color: var(--muted); }
+.tile-name { padding: 0 4px; font: 500 0.95rem/1 'Atkinson Hyperlegible Mono', monospace; letter-spacing: 0.04em; color: var(--muted); }
 
 .glass {
   position: absolute;
@@ -185,7 +185,7 @@ ul { padding: 0; list-style: none; }
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   backdrop-filter: blur(18px) saturate(140%);
 }
-.glass-label { font: 500 0.8rem/1 'Geist Mono', monospace; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.glass-label { font: 500 0.8rem/1 'Atkinson Hyperlegible Mono', monospace; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
 .glass-text { font: 600 1.3rem/1.25 'Schibsted Grotesk', sans-serif; }
 
 /* Static token elevation: what the page looks like with the light off. */

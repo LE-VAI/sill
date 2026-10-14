@@ -6,7 +6,7 @@
     <img src="https://raw.githubusercontent.com/LE-VAI/sill/main/docs/media/hero-loop.webp" width="800" alt="A dark interface lit by the mouse pointer. A large serif headline, Lit by the pointer, casts shadows that swing as the cursor moves, then a keypad of raised keys catches moving highlights.">
   </picture>
 </p>
-<p align="center"><sub>A 5.5-second loop from the live page, captured frame by frame. It shows a still frame if you prefer reduced motion. <a href="https://le-vai.github.io/sill/">Try it live</a>.</sub></p>
+<p align="center"><sub>A 4.7-second loop from the live page, captured frame by frame. It shows a still frame if you prefer reduced motion. <a href="https://le-vai.github.io/sill/">Try it live</a>.</sub></p>
 
 Real-time light for interfaces. The pointer is the light: cards, controls and
 type cast shadows projected from it, catch highlights where a real surface

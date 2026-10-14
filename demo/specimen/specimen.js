@@ -43,6 +43,29 @@ const setTemp = (v) => {
 temp.addEventListener('input', () => setTemp(temp.value));
 setTemp(5600);
 
+// The source control is real too: Lamp follows the pointer as an area light, Sun places
+// the pointer in the sky. A radio group, so arrow keys move between the two.
+const segBtns = [...document.querySelectorAll('.seg-btn[data-mode]')];
+const setMode = (mode, focus = false) => {
+  for (const b of segBtns) {
+    const on = b.dataset.mode === mode;
+    b.classList.toggle('is-on', on);
+    b.setAttribute('aria-checked', String(on));
+    b.tabIndex = on ? 0 : -1;
+    if (on && focus) b.focus();
+  }
+  sill.set({ mode });
+};
+for (const b of segBtns) {
+  b.addEventListener('click', () => setMode(b.dataset.mode));
+  b.addEventListener('keydown', (e) => {
+    if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) return;
+    e.preventDefault();
+    const i = segBtns.indexOf(b), step = e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 1;
+    setMode(segBtns[(i + step + segBtns.length) % segBtns.length].dataset.mode, true);
+  });
+}
+
 mountPanel(sill, { onTheme: (t) => { document.documentElement.dataset.theme = t === 'auto' ? 'dark' : t; } });
 window.sill = sill;
-window.specimen = { setTemp };
+window.specimen = { setTemp, setMode };

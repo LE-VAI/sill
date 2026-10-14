@@ -54,23 +54,23 @@
 
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --paper: #0e0d0c;
-  --surface: #161513;
-  --surface-raised: #1c1a18;
-  --surface-lifted: #23211e;
-  --ink: #f3f1ed;
-  --muted: #a8a39b;
-  --muted-dim: #99948b;
-  --line: rgb(255 245 230 / 0.1);
-  --line-strong: rgb(255 245 230 / 0.2);
-  --on-ink: #161513;
+  --paper: #0c0c0e;
+  --surface: #141417;
+  --surface-raised: #1a1a1e;
+  --surface-lifted: #212126;
+  --ink: #f5f5f7;
+  --muted: #a4a4ab;
+  --muted-dim: #97979e;
+  --line: rgb(255 255 255 / 0.1);
+  --line-strong: rgb(255 255 255 / 0.2);
+  --on-ink: #141417;
   --signal-access: #0A94FF;
-  --stage-back: #1e1b18;
-  --stage-floor: #3b362f;
+  --stage-back: #1b1c20;
+  --stage-floor: #33353b;
   --elev-1: 0 1px 1px rgb(0 0 0 / 0.3), 0 2px 4px rgb(0 0 0 / 0.22);
   --elev-2: 0 1px 1px rgb(0 0 0 / 0.28), 0 4px 8px -2px rgb(0 0 0 / 0.3), 0 12px 24px -8px rgb(0 0 0 / 0.36);
 
-  --sill-floor: #121110;
+  --sill-floor: #111114;
   --sill-sky: #c9d2e4;
   --sill-shade: 0 0 0;
   --sill-key: 1.05;
@@ -81,7 +81,7 @@
   --sill-rim: 0.6;
   --sill-cast: 0.42;
   --sill-lift-max: 0.04;
-  --sill-ring: rgb(255 245 230 / 0.07);
+  --sill-ring: rgb(255 255 255 / 0.07);
   --sill-bump: 2;
   --sill-grain: 0.03;
 }
@@ -89,22 +89,22 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
     color-scheme: dark;
-    --paper: #0e0d0c;
-    --surface: #161513;
-    --surface-raised: #1c1a18;
-    --surface-lifted: #23211e;
-    --ink: #f3f1ed;
-    --muted: #a8a39b;
-    --muted-dim: #99948b;
-    --line: rgb(255 245 230 / 0.1);
-    --line-strong: rgb(255 245 230 / 0.2);
-    --on-ink: #161513;
+    --paper: #0c0c0e;
+    --surface: #141417;
+    --surface-raised: #1a1a1e;
+    --surface-lifted: #212126;
+    --ink: #f5f5f7;
+    --muted: #a4a4ab;
+    --muted-dim: #97979e;
+    --line: rgb(255 255 255 / 0.1);
+    --line-strong: rgb(255 255 255 / 0.2);
+    --on-ink: #141417;
     --signal-access: #0A94FF;
-    --stage-back: #1e1b18;
-    --stage-floor: #3b362f;
+    --stage-back: #1b1c20;
+    --stage-floor: #33353b;
     --elev-1: 0 1px 1px rgb(0 0 0 / 0.3), 0 2px 4px rgb(0 0 0 / 0.22);
     --elev-2: 0 1px 1px rgb(0 0 0 / 0.28), 0 4px 8px -2px rgb(0 0 0 / 0.3), 0 12px 24px -8px rgb(0 0 0 / 0.36);
-    --sill-floor: #121110;
+    --sill-floor: #111114;
     --sill-sky: #c9d2e4;
     --sill-shade: 0 0 0;
     --sill-key: 1.05;
@@ -115,7 +115,7 @@
     --sill-rim: 0.6;
     --sill-cast: 0.42;
     --sill-lift-max: 0.04;
-    --sill-ring: rgb(255 245 230 / 0.07);
+    --sill-ring: rgb(255 255 255 / 0.07);
     --sill-bump: 2;
     --sill-grain: 0.03;
   }

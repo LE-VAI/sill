@@ -20,7 +20,7 @@ if (q.get('theme')) document.documentElement.dataset.theme = q.get('theme');
 
 const sill = new Sill({
   root: document.body,
-  params: { mode: 'lamp', temperature: 3200, intensity: 1.15, ambient: 0.3, shadowLength: 1.4, softness: 0.55, depth: 1.6, material: 1.4, rays: 0.45, falloff: 0.9 },
+  params: { mode: 'lamp', temperature: 5600, intensity: 1.15, ambient: 0.34, shadowLength: 1.4, softness: 0.5, depth: 1.6, material: 1.4, rays: 0, falloff: 0.9 },
 });
 
 // Specimen controls are real: the switch flips, the slider sets the light's temperature.
@@ -41,7 +41,7 @@ const setTemp = (v) => {
   sill.set({ temperature: Number(v) });
 };
 temp.addEventListener('input', () => setTemp(temp.value));
-setTemp(3200);
+setTemp(5600);
 
 mountPanel(sill, { onTheme: (t) => { document.documentElement.dataset.theme = t === 'auto' ? 'dark' : t; } });
 window.sill = sill;

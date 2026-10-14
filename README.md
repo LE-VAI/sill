@@ -34,7 +34,7 @@ npm install @designesy/sill
 import '@designesy/sill/sill.css';
 import { Sill } from '@designesy/sill';
 
-new Sill({ params: { mode: 'lamp', temperature: 3200 } });
+new Sill({ params: { mode: 'lamp', temperature: 5600 } });
 ```
 
 Without a build step, straight from a CDN:
@@ -43,7 +43,7 @@ Without a build step, straight from a CDN:
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@designesy/sill@0.1.2/src/sill.css">
 <script type="module">
   import { Sill } from 'https://cdn.jsdelivr.net/npm/@designesy/sill@0.1.2/src/sill.js';
-  new Sill({ params: { mode: 'lamp', temperature: 3200 } });
+  new Sill({ params: { mode: 'lamp', temperature: 5600 } });
 </script>
 ```
 
@@ -68,7 +68,7 @@ Without a build step, straight from a CDN:
 ## Before and after
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/LE-VAI/sill/main/docs/media/before-after.png" width="800" alt="Split view of the same page. Left of a warm divider line, Sill: a pool of lamp light and shadows. Right, static shadows on a flat dark background.">
+  <img src="https://raw.githubusercontent.com/LE-VAI/sill/main/docs/media/before-after.png" width="800" alt="Split view of the same page. Left of a thin divider line, Sill: a pool of lamp light and cast shadows. Right, static shadows on a flat dark background.">
 </p>
 
 ## Accessibility

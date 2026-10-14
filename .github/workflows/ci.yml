@@ -26,7 +26,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Run the test suite
         # Node 18 and 20 do not expand globs in --test, so pass the files explicitly.
-        run: node --test tests/sill.test.mjs
+        run: node --test tests/sill.test.mjs tests/brand.test.mjs
       - name: Verify every module parses
         run: |
           for f in src/*.js; do

@@ -63,6 +63,8 @@ export interface SillStats {
   gl: boolean;
 }
 
+/** Surface texture used when a theme omits --sill-bump / --sill-grain. */
+export declare const THEME_FALLBACKS: { bump: number; grain: number };
 export declare const DEFAULTS: SillParams;
 export declare const MATERIALS: Record<MaterialName, Material>;
 export declare const PRESETS: Record<PresetName, Partial<SillParams>>;

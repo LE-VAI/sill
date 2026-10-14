@@ -1,6 +1,6 @@
 {
   "name": "@designesy/sill",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Real-time light for interfaces: the pointer is the light, and cards, controls and type cast physically projected shadows, catch highlights and edge light. Zero dependencies, accessible by construction.",
   "type": "module",
   "main": "src/sill.js",

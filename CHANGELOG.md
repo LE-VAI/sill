@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.2 (2026-10-13)
+
+- Fix: when a theme does not set `--sill-bump` or `--sill-grain`, surfaces fall
+  back to a fine satin texture (1.4 and 0.03). They fell back to 9 and 0.05,
+  which rendered as stucco on any page that relied on the defaults. The values
+  are exported as `THEME_FALLBACKS` and covered by a test.
+- Demos: moved to the Designesy identity v1 palette (Azure, Deep Azure, ink on
+  Azure, Atkinson Hyperlegible Mono), with a CI test that fails on any retired
+  brand colour.
+- Demos: the landing page, Specimen and Wordmark use 5600 K neutral daylight
+  with haze off. Warm light remains available through presets and parameters;
+  library defaults are unchanged.
+
 ## 0.1.1 (2026-10-13)
 
 Fixes only; the library code is unchanged.

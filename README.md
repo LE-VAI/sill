@@ -40,9 +40,9 @@ new Sill({ params: { mode: 'lamp', temperature: 3200 } });
 Without a build step, straight from a CDN:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@designesy/sill@0.1.1/src/sill.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@designesy/sill@0.1.2/src/sill.css">
 <script type="module">
-  import { Sill } from 'https://cdn.jsdelivr.net/npm/@designesy/sill@0.1.1/src/sill.js';
+  import { Sill } from 'https://cdn.jsdelivr.net/npm/@designesy/sill@0.1.2/src/sill.js';
   new Sill({ params: { mode: 'lamp', temperature: 3200 } });
 </script>
 ```

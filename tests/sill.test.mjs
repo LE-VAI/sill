@@ -2,7 +2,7 @@
 // The renderers need a DOM and a GPU; the light model underneath them does not.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { Sill, DEFAULTS, MATERIALS, PRESETS, TIERS, kelvin, toLinear } from '../src/sill.js';
+import { Sill, DEFAULTS, MATERIALS, PRESETS, TIERS, THEME_FALLBACKS, kelvin, toLinear } from '../src/sill.js';
 
 test('the core imports in plain Node (no DOM at module load)', async () => {
   const stage = await import('../src/stage.js');
@@ -96,4 +96,11 @@ test('contrast guard: faces with no text may take more light, still capped', () 
   const bare = shadeOnce({ bare: true, params: { intensity: 1.6, material: 2 }, theme: darkTheme });
   assert.ok(bare > text, 'a bare face should be allowed more light than a text face');
   assert.ok(bare <= darkTheme.liftMaxBare + 0.002, `bare lift ${bare} exceeds ${darkTheme.liftMaxBare}`);
+});
+
+test('texture fallbacks stay fine: a theme that omits bump and grain is satin, not stucco', () => {
+  // 0.1.0-0.1.1 fell back to bump 9 / grain 0.05, which reads as plaster.
+  // Every shipped demo theme sets 1-1.4 and 0.02-0.03; the fallback must sit in that range.
+  assert.ok(THEME_FALLBACKS.bump >= 0.5 && THEME_FALLBACKS.bump <= 2, `bump ${THEME_FALLBACKS.bump}`);
+  assert.ok(THEME_FALLBACKS.grain >= 0 && THEME_FALLBACKS.grain <= 0.04, `grain ${THEME_FALLBACKS.grain}`);
 });

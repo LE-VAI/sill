@@ -48,6 +48,14 @@ export const PRESETS = {
   lamp: { mode: 'lamp', temperature: 2900, intensity: 1, ambient: 0.42, shadowLength: 1, softness: 0.45, rays: 0.3 },
 };
 
+/*
+  Surface texture used when a theme does not set --sill-bump / --sill-grain.
+  Kept fine: a theme that omits them should look like a quiet satin, never
+  stucco. (0.1.0 and 0.1.1 fell back to bump 9 and grain 0.05, which read as
+  plaster on any page that relied on the defaults.)
+*/
+export const THEME_FALLBACKS = { bump: 1.4, grain: 0.03 };
+
 export const DEFAULTS = {
   mode: 'lamp', // 'lamp' (area light at the pointer) or 'sun' (directional, pointer sets its position in the sky)
   follow: true, // light follows the pointer
@@ -704,8 +712,8 @@ export class Sill {
       liftMaxBare: num('--sill-lift-max-bare', 0.6),
       bareGain: num('--sill-bare-gain', 1),
       shade: v('--sill-shade', '24 32 72'),
-      bump: num('--sill-bump', 9),
-      grain: num('--sill-grain', 0.05),
+      bump: num('--sill-bump', THEME_FALLBACKS.bump),
+      grain: num('--sill-grain', THEME_FALLBACKS.grain),
       dark: floorLin[0] + floorLin[1] + floorLin[2] < 0.3,
     };
   }
